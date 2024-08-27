@@ -18,23 +18,23 @@ const CartItem = ({item:{id,productId,quantity}}) => {
   }
 
   return (
-    <div  className='grid grid-cols-6 my-2  border border-gray-200 rounded-lg shadow px-5 py-2 '>
+    <div  className='grid grid-cols-7 my-2  border border-gray-200 rounded-lg shadow px-5 py-2 '>
        
-        <div className='col-span-1 flex items-center justify-center '>
+        <div className='col-span-2 flex items-center justify-center '>
             <img className='h-16 ' src={currentProduct.image} alt="" />
         </div>
-        <div className='col-span-3 sm:py-2 px-2 flex flex-col justify-between'>
+        <div className='col-span-3  font-semibold sm:py-2 px-2  flex  flex-col justify-center'>
             <h2 className='line-clamp-2'>{currentProduct.title}</h2>
-            <p>Price(${currentProduct.price})</p>
+            <p className='text-xs py-1 font-semibold text-red-500'>Price(${currentProduct.price})</p>
         </div>
         <div className='col-span-1'>
-            <p>Quantity</p>
+            <p className='text-sm pb-2'>Quantity</p>
             <div className=' flex flex-col sm:flex-row items-center  gap-2 '>
-                <button onClick={decreaseBtnHandler}>
+                <button className='rounded overflow-hidden' onClick={decreaseBtnHandler}>
                     < MinusComponent />
                 </button>
-                <p>{quantity}</p>
-                <button onClick={increaseBtnHandler}>
+                <p className='text-xs'>{quantity}</p>
+                <button className='rounded overflow-hidden' onClick={increaseBtnHandler}>
                     <PlusComponent/>
                 </button>
             </div>

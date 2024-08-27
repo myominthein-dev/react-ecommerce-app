@@ -5,11 +5,12 @@ import CartSection from '../components/CartSection'
 
 const Cart = () => {
   return (
-    <Container>
+    <Container className={"flex flex-col"}>
         <BreadCrumb>
             Cart
         </BreadCrumb>
         <CartSection />
+
     </Container>
   )
 }

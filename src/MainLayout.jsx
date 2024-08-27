@@ -6,20 +6,24 @@ import { Waypoint } from "react-waypoint";
 import CateGroup from "./components/CateGroup";
 
 const MainLayout = () => {
-  const [stick,setStick] = useState(false);
+  const [stick, setStick] = useState(false);
 
-  const handleEnter =()=>{
+  const handleEnter = () => {
     setStick(false);
-  }
-  const handleLeave =()=>{
+  };
+  const handleLeave = () => {
     setStick(true);
-  }
+  };
   return (
-    <div className="flex  flex-col h-full min-h-screen">
+    <div className="flex  flex-col min-h-svh ">
       <Header stick={stick} />
-      <Waypoint topOffset={'-50%'} onLeave={handleLeave}  onEnter={handleEnter}/>
-       
-       <Outlet />
+      <Waypoint
+        topOffset={"-50%"}
+        onLeave={handleLeave}
+        onEnter={handleEnter}
+      />
+
+      <Outlet />
       <Footer />
     </div>
   );

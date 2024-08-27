@@ -24,7 +24,7 @@ const ProductCard = ({product}) => {
   return (
     
 
-<div onClick={cardHandler} className="w-full cursor-pointer mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+<div onClick={cardHandler} className="w-full transition-all duration-300 active:scale-90 cursor-pointer mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
   <div>
     <img className="p-8 rounded-t-lg h-56 mx-auto" src={product.image} alt="product image" />
   </div>
@@ -51,7 +51,7 @@ const ProductCard = ({product}) => {
     <div className="flex items-center justify-between">
       <span className="text-xl font-bold text-gray-900 dark:text-white">${product.price}</span>
       {
-        existed ? <button disabled onClick={addBtnHandler} className="text-slate-300 text-nowrap bg-gray-700  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600  dark:focus:ring-blue-800">Added</button> : <button onClick={addBtnHandler} className="text-white text-nowrap bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Add to cart</button>
+        existed ? <button disabled onClick={addBtnHandler} className="text-slate-300 text-nowrap bg-gray-700  focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600  dark:focus:ring-blue-800">Added</button> : <button onClick={addBtnHandler} className="text-white text-nowrap active:scale-75 duration-300 transition-all bg-blue-600 hover:bg-blue-800 focus:ring-1 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-400 dark:hover:bg-blue-700 dark:focus:ring-blue-600 z-auto">Add to cart</button>
       }
     </div>
   </div>

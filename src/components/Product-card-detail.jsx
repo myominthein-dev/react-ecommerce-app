@@ -25,12 +25,12 @@ const ProductCardDetail = () => {
   }
 
   return (
-    <div className="my-auto">
+    <div className="my-auto ">
       <h3 className="text-2xl my-3 font-serif">Product Details</h3>
-      <div className="border border-gray-200 rounded-lg shadow p-5 sm:grid grid-cols-5 border-black">
+      <div className="border overflow-hidden rounded-lg shadow p-5 sm:grid grid-cols-5 border-gray-600">
         <div className="col-span-2 sm:col-span-2 flex flex-col items-center justify-center ">
           <img className="h-28" src={currentProduct.image} alt="" />
-          <div className="flex my-3 gap-3">
+          <div className="flex my-3 justify-evenly w-full">
             <img className="h-14" src={currentProduct.image} alt="" />
             <img className="h-14" src={currentProduct.image} alt="" />
             <img className="h-14" src={currentProduct.image} alt="" />
@@ -56,7 +56,7 @@ const ProductCardDetail = () => {
             ) : (
               <button
                 onClick={addBtnHandler}
-                className="text-white text-nowrap bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                className="text-white active:scale-75 transition-all duration-300 text-nowrap bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
                 Add to cart
               </button>
