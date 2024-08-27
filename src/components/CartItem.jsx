@@ -1,0 +1,50 @@
+import React from 'react'
+import useProductStore from '../store/useProductStore'
+import MinusComponent from './MinusComponent';
+import PlusComponent from './PlusComponent';
+
+const CartItem = ({item:{id,productId,quantity}}) => {
+  const {products} = useProductStore();
+  const currentProduct = products.find(product => product.id == productId)
+
+  const multiPrice = 300
+
+  const increaseBtnHandler = () =>{
+
+  }
+
+  const decreaseBtnHandler = () => {
+
+  }
+
+  return (
+    <div  className='grid grid-cols-6 my-2  border border-gray-200 rounded-lg shadow px-5 py-2 '>
+       
+        <div className='col-span-1 flex items-center justify-center '>
+            <img className='h-16 ' src={currentProduct.image} alt="" />
+        </div>
+        <div className='col-span-3 sm:py-2 px-2 flex flex-col justify-between'>
+            <h2 className='line-clamp-2'>{currentProduct.title}</h2>
+            <p>Price(${currentProduct.price})</p>
+        </div>
+        <div className='col-span-1'>
+            <p>Quantity</p>
+            <div className=' flex flex-col sm:flex-row items-center  gap-2 '>
+                <button onClick={decreaseBtnHandler}>
+                    < MinusComponent />
+                </button>
+                <p>{quantity}</p>
+                <button onClick={increaseBtnHandler}>
+                    <PlusComponent/>
+                </button>
+            </div>
+        </div>
+        <div className='col-span-1 flex flex-col font-semibold text-lg md:text-xl  items-center justify-center '>
+            <h3>Cost</h3>
+            <p>{multiPrice.toFixed(2)}</p>
+        </div>
+    </div>
+  )
+}
+
+export default CartItem

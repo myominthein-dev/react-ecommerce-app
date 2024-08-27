@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cateGroup {
+    scrollbar-width: none;
+}
+
+.cateGroup::-webkit-scrollbar {
+    display: none;
+}
