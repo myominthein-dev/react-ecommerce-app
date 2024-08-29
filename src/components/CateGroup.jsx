@@ -8,7 +8,7 @@ const CateGroup = () => {
   const { categories, changeActive } = useCategoryStore();
 
   return (
-    <Container>
+   
       <div>
         <h4 className="text-xl my-2 font-semibold">Categories</h4>
         <div className="flex cateGroup overflow-scroll gap-1">
@@ -21,7 +21,7 @@ const CateGroup = () => {
           ))}
         </div>
       </div>
-    </Container>
+   
   );
 };
 

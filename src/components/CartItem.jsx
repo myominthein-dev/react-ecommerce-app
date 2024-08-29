@@ -2,19 +2,21 @@ import React from 'react'
 import useProductStore from '../store/useProductStore'
 import MinusComponent from './MinusComponent';
 import PlusComponent from './PlusComponent';
+import useCartStore from '../store/useCartStore';
 
 const CartItem = ({item:{id,productId,quantity}}) => {
   const {products} = useProductStore();
+  const {increaseQty, decreaseQty} = useCartStore();
   const currentProduct = products.find(product => product.id == productId)
 
-  const multiPrice = 300
+  const multiPrice = currentProduct.price * quantity
 
   const increaseBtnHandler = () =>{
-
+    increaseQty(id)
   }
 
   const decreaseBtnHandler = () => {
-
+    decreaseQty(id)
   }
 
   return (

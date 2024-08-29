@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.cateGroup {
+.cateGroup, .cartGroup {
     scrollbar-width: none;
 }
 
-.cateGroup::-webkit-scrollbar {
+.cateGroup::-webkit-scrollbar, .cartGroup::-webkit-scrollbar {
     display: none;
 }

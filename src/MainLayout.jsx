@@ -14,16 +14,21 @@ const MainLayout = () => {
   const handleLeave = () => {
     setStick(true);
   };
+
+  const positionHandler = ({ previousPosition, currentPosition }) => {
+    if (previousPosition == "above" && currentPosition == "inside") {
+      setStick(true);
+    } else if (previousPosition == "inside" && currentPosition == "above") {
+      setStick(false);
+    }
+  };
   return (
-    <div className="flex  flex-col min-h-svh ">
+    <div className="flex relative flex-col ">
       <Header stick={stick} />
-      <Waypoint
-        topOffset={"-50%"}
-        onLeave={handleLeave}
-        onEnter={handleEnter}
-      />
+
 
       <Outlet />
+      <Waypoint onPositionChange={positionHandler} />
       <Footer />
     </div>
   );

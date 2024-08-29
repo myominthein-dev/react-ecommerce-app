@@ -5,16 +5,16 @@ import CartItem from "./CartItem";
 const CartSection = () => {
   const { cartItems } = useCartStore();
   return (
-    <div className="  flex-grow relative">
-      <div className="my-4">
+    <div className="  flex flex-col h-svh  relative">
+      <div className="my-4 flex-grow-0 overflow-scroll cartGroup  ">
         {cartItems.map((item) => (
           <CartItem key={item.id} item={item} />
         ))}
       </div>
 
-      <div className="py-4 border-t-2 absolute bottom-0 left-0 right-0 ">
+      <div className="py-4 border-t-2 absolute  bg-gray-50 px-2 bottom-8 left-0 right-0 ">
         <div className="flex justify-between">
-          <button className="border rounded border-gray-700 px-4  hover:bg-gray-700 transition-all duration-300 active:scale-90 hover:text-white text-nowrap">
+          <button className="border rounded dark:text-white text-slate-800 font-semibold border-gray-700 px-4  hover:bg-gray-700 transition-all duration-300 active:scale-90 hover:text-white text-nowrap">
             Order Now
           </button>
           <div className="   flex items-end  justify-end gap-10 ">

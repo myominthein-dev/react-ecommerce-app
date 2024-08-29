@@ -5,7 +5,7 @@ import CartSection from '../components/CartSection'
 
 const Cart = () => {
   return (
-    <Container className={"flex flex-col"}>
+    <Container className={"flex h-lvh overflow-hidden flex-col"}>
         <BreadCrumb>
             Cart
         </BreadCrumb>
