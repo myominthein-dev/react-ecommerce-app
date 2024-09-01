@@ -23,7 +23,7 @@ const MainLayout = () => {
     }
   };
   return (
-    <div className="flex relative flex-col ">
+    <div className="flex relative h-screen  flex-col ">
       <Header stick={stick} />
 
 

@@ -6,7 +6,7 @@ import useCartStore from '../store/useCartStore';
 
 const CartItem = ({item:{id,productId,quantity}}) => {
   const {products} = useProductStore();
-  const {increaseQty, decreaseQty} = useCartStore();
+  const {increaseQty, decreaseQty,removeCartItem} = useCartStore();
   const currentProduct = products.find(product => product.id == productId)
 
   const multiPrice = currentProduct.price * quantity
@@ -16,7 +16,11 @@ const CartItem = ({item:{id,productId,quantity}}) => {
   }
 
   const decreaseBtnHandler = () => {
-    decreaseQty(id)
+    if (quantity > 1) {
+      decreaseQty(id)
+    }  else {
+      removeCartItem(id)
+    }
   }
 
   return (

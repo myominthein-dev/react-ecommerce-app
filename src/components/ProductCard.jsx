@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import RatingStar from "./RatingStar";
 import { useNavigate } from "react-router-dom";
 import useCartStore from "../store/useCartStore";
@@ -11,10 +11,7 @@ const ProductCard = ({ product }) => {
     nav(`/product-detail/${product.id}`);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  
 
   const existed = cartItems.find((item) => item.productId == product.id);
 
@@ -27,9 +24,17 @@ const ProductCard = ({ product }) => {
     };
     addCartItem(obj);
   };
+
+  
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
+
+
   return (
-    <motion.div
-      variants={itemVariants}  exit={itemVariants}
+    <motion.div 
+      variants={itemVariants}   exit={itemVariants}
       className="w-full transition-all duration-300 hover:scale-105 mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
     >
       <div>
