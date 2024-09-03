@@ -3,6 +3,8 @@ import useProductStore from '../store/useProductStore'
 import MinusComponent from './MinusComponent';
 import PlusComponent from './PlusComponent';
 import useCartStore from '../store/useCartStore';
+import Swal from 'sweetalert2';
+import toast, { Toaster } from 'react-hot-toast';
 
 const CartItem = ({item:{id,productId,quantity}}) => {
   const {products} = useProductStore();
@@ -10,7 +12,7 @@ const CartItem = ({item:{id,productId,quantity}}) => {
   const currentProduct = products.find(product => product.id == productId)
 
   const multiPrice = currentProduct.price * quantity
-
+  const deleteNotify = ()=> toast.success("Item removed!")
   const increaseBtnHandler = () =>{
     increaseQty(id)
   }
@@ -19,13 +21,32 @@ const CartItem = ({item:{id,productId,quantity}}) => {
     if (quantity > 1) {
       decreaseQty(id)
     }  else {
-      removeCartItem(id)
+      Swal.fire({
+        title: 'Sure to Remove?',
+      
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: ' #d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Remove',
+        cancelButtonText: 'Cancel',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            deleteNotify();
+            removeCartItem(id)
+            // Your code to handle the confirmation (e.g., delete action) goes here
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            Swal.fire(
+                'Cancelled'
+            );
+        }
+    });
     }
   }
 
   return (
     <div  className='grid grid-cols-7 my-2  border border-gray-200 rounded-lg shadow px-5 py-2 '>
-       
+       <Toaster/>
         <div className='col-span-2 flex items-center justify-center '>
             <img className='h-16 ' src={currentProduct.image} alt="" />
         </div>

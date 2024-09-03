@@ -1,15 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import useCartStore from "../store/useCartStore";
 import CartItem from "./CartItem";
+import useProductStore from "../store/useProductStore";
+import emptyCart from "../assets/empty_cart.svg"
 
 const CartSection = () => {
   const { cartItems } = useCartStore();
+  const {products} = useProductStore();
+
+  const total = cartItems.reduce((pv,cv) => {
+    const price = products.find(product => product.id == cv.productId).price;
+    const cost = cv.quantity * price;
+    return pv + cost
+  },0)
+
+  const taxPercent = total * 0.05;
+  const netTotal = total + taxPercent;
   return (
-    <div className=" overflow-scroll cartGroup  flex flex-col">
-      <div className="my-4 pb-20 overflow-scroll cartGroup  ">
-        {cartItems.map((item) => (
-          <CartItem key={item.id} item={item} />
-        ))}
+    <div className=" overflow-scroll  cartGroup flex flex-col">
+      <div className="pb-20">
+        {
+          cartItems.length == 0 ? <><img className="size-40 mt-14 mx-auto" src={emptyCart} /> <p className="text-center font-semibold text-sm">Cart is Empty!</p></>: cartItems.map((item) => (
+           
+               <CartItem key={item.id}  item={item} />
+         
+          ))
+        }
       </div >
 
       <div className="py-4 border-t-2 absolute  bg-gray-50 px-2 bottom-0 left-0 right-0 ">
@@ -20,15 +36,15 @@ const CartSection = () => {
           <div className="   flex items-end  justify-end gap-10 ">
           <div className=" text-right">
             <p className=" text-gray-500 pb-1 font-semibold">Total</p>
-            <p className=" font-bold">43.28</p>
+            <p className=" font-bold">{total.toFixed(2)}</p>
           </div>
           <div className=" text-right">
             <p className=" text-gray-500 pb-1 font-semibold">Tax(5%)</p>
-            <p className=" font-bold">2.16</p>
+            <p className=" font-bold">{taxPercent.toFixed(2)}</p>
           </div>
           <div className=" text-right">
             <p className=" text-gray-500 font-semibold text-lg">Net Total</p>
-            <p className=" text-xl font-bold">45.44</p>
+            <p className=" text-xl font-bold">{netTotal.toFixed(2)}</p>
           </div>
         </div>
         </div>

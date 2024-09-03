@@ -3,6 +3,7 @@ import RatingStar from "./RatingStar";
 import { useNavigate } from "react-router-dom";
 import useCartStore from "../store/useCartStore";
 import { motion } from "framer-motion";
+import toast, { Toaster } from "react-hot-toast";
 
 const ProductCard = ({ product }) => {
   const nav = useNavigate();
@@ -11,7 +12,7 @@ const ProductCard = ({ product }) => {
     nav(`/product-detail/${product.id}`);
   };
 
-  
+  const successNotify = () => toast.success("Product added!")
 
   const existed = cartItems.find((item) => item.productId == product.id);
 
@@ -23,6 +24,7 @@ const ProductCard = ({ product }) => {
       quantity: 1,
     };
     addCartItem(obj);
+    successNotify();
   };
 
   
@@ -37,6 +39,7 @@ const ProductCard = ({ product }) => {
       variants={itemVariants}   exit={itemVariants}
       className="w-full transition-all duration-300 hover:scale-105 mx-auto max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
     >
+      <Toaster/>
       <div>
         <img
           className="p-8 rounded-t-lg h-56 mx-auto"
