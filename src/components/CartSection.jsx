@@ -18,7 +18,7 @@ const CartSection = () => {
   const netTotal = total + taxPercent;
   return (
     <div className=" overflow-scroll  cartGroup flex flex-col">
-      <div className="pb-20">
+      <div className="pb-36 sm:pb-20">
         {
           cartItems.length == 0 ? <><img className="size-40 mt-14 mx-auto" src={emptyCart} /> <p className="text-center font-semibold text-sm">Cart is Empty!</p></>: cartItems.map((item) => (
            
@@ -28,7 +28,7 @@ const CartSection = () => {
         }
       </div >
 
-      <div className="py-4 border-t-2 absolute  bg-gray-50 px-2 bottom-0 left-0 right-0 ">
+      <div className="py-2 sm:py-4 border-t-2 absolute  bg-gray-50 px-2 bottom-0 left-0 right-0 ">
         <div className="sm:flex justify-between">
           <button className="border rounded hidden sm:block dark:text-white text-slate-800 font-semibold border-gray-700 px-4  hover:bg-gray-700 transition-all duration-300 active:scale-90 hover:text-white text-nowrap">
             Order Now
@@ -47,7 +47,7 @@ const CartSection = () => {
             <p className=" text-xl font-bold">{netTotal.toFixed(2)}</p>
           </div>
         </div>
-        <button className="border rounded my-2 w-full py-3 sm:hidden dark:text-white text-slate-800 font-semibold border-gray-700 px-4  hover:bg-gray-700 transition-all duration-300 active:scale-90 hover:text-white text-nowrap">
+        <button className="border rounded mt-2 w-full py-3 sm:hidden dark:text-white text-slate-800 font-semibold border-gray-700 px-4  hover:bg-gray-700 transition-all duration-300 active:scale-90 hover:text-white text-nowrap">
             Order Now
           </button>
         </div>
