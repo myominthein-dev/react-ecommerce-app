@@ -1,6 +1,6 @@
-# Tinyverse Kids' Garden
+# Ecommerce-app
 
-![Project Logo or Screenshot](/src/assets/logo.svg)
+<img src="./src/assets/meta_tag_shop.svg" alt="Alt text" width="100" height="100">
 
 
 ![Project Preview](/src/assets/ecommerce_preview%20(2).png)
